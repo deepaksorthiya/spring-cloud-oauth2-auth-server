@@ -15,6 +15,11 @@ import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
 import com.example.usermgmt.AppUser;
 
+/**
+ * @author deepakk
+ * @date Sep 9, 2019
+ */
+
 public class CustomJdbcUserDetailManager extends JdbcUserDetailsManager {
 
 	@Override

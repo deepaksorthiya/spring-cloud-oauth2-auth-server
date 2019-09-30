@@ -5,6 +5,11 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+/**
+ * @author deepakk
+ * @date Sep 9, 2019
+ */
+
 public class AppUser extends User {
 
 	/**

@@ -28,7 +28,7 @@ import com.example.security.CustomWebAuthenticationDetailsSource;
  */
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true, jsr250Enabled = true)
-public class WebSecConfig extends WebSecurityConfigurerAdapter {
+public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private DataSource dataSource;
@@ -38,18 +38,29 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(daoAuthenticationProvider());
+		// @formatter:off
+		auth
+			.authenticationProvider(daoAuthenticationProvider());
+		// @formatter:on
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		web.ignoring().antMatchers("/favicon.ico/**");
+		// @formatter:off
+		web
+			.ignoring()
+			.antMatchers("/favicon.ico/**");
+		// @formatter:on
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin()
-				.authenticationDetailsSource(customWebAuthenticationDetailsSource);
+		// @formatter:off
+		http
+			.authorizeRequests().anyRequest().authenticated()
+			.and()
+			.formLogin().authenticationDetailsSource(customWebAuthenticationDetailsSource);
+		// @formatter:on
 	}
 
 	// Expose the UserDetailsService as a Bean

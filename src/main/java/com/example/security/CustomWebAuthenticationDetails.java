@@ -23,4 +23,15 @@ public class CustomWebAuthenticationDetails extends WebAuthenticationDetails {
 	public String getVerificationCode() {
 		return verificationCode;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
 }

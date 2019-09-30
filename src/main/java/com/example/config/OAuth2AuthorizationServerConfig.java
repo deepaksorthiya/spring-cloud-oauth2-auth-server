@@ -14,6 +14,11 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
+/**
+ * @author deepakk
+ * @date Sep 9, 2019
+ */
+
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
@@ -26,17 +31,28 @@ public class OAuth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
 	@Override
 	public void configure(final AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+		// @formatter:off
+		oauthServer
+					.tokenKeyAccess("permitAll()")
+					.checkTokenAccess("isAuthenticated()");
+		// @formatter:on
 	}
 
 	@Override
 	public void configure(final ClientDetailsServiceConfigurer clients) throws Exception {
-		clients.jdbc(dataSource);
+		// @formatter:off
+		clients
+				.jdbc(dataSource);
+		// @formatter:on
 	}
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore());
+		// @formatter:off
+		endpoints
+				.authenticationManager(authenticationManager)
+				.tokenStore(tokenStore());
+		// @formatter:on
 	}
 
 	@Bean
