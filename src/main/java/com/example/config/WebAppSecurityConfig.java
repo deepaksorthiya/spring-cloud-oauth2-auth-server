@@ -49,7 +49,7 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 		// @formatter:off
 		web
 			.ignoring()
-			.antMatchers("/favicon.ico/**");
+			.antMatchers("/favicon.ico/**", "/h2-console/**");
 		// @formatter:on
 	}
 
